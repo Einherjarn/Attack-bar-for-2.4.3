@@ -49,7 +49,7 @@ function Abar_loaded()
 		abar.swapping=false
 	end
 	if abar.offhand == nil then
-		abar.offhand=false
+		abar.offhand=true
 	end
 	Abar_Mhr:SetPoint("LEFT",Abar_Frame,"TOPLEFT",6,-13)
 	Abar_Oh:SetPoint("LEFT",Abar_Frame,"TOPLEFT",6,-35)
