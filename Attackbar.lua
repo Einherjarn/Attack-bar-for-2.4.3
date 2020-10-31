@@ -48,6 +48,9 @@ function Abar_loaded()
 	if abar.swapping == nil then
 		abar.swapping=false
 	end
+	if abar.offhand == nil then
+		abar.offhand=false
+	end
 	Abar_Mhr:SetPoint("LEFT",Abar_Frame,"TOPLEFT",6,-13)
 	Abar_Oh:SetPoint("LEFT",Abar_Frame,"TOPLEFT",6,-35)
 	Abar_MhrText:SetJustifyH("Left")
@@ -114,6 +117,9 @@ function Abar_chat(msg)
 	elseif msg=="swap" then
 		abar.swapping = not(abar.swapping)
 		DEFAULT_CHAT_FRAME:AddMessage('wf weaving is'.. Abar_Boo(abar.swapping));
+	elseif msg=="offhand" then
+		abar.offhand = not(abar.offhand)
+		DEFAULT_CHAT_FRAME:AddMessage('offhand bar is'.. Abar_Boo(abar.offhand));
 	elseif msg=="text" then
 		local Border = "Border"
 		local Bordern = "Bordern"
@@ -194,7 +200,9 @@ function Abar_selfhit()
 			onh = 0
 			ohd,old = ohd-math.fmod(ohd,1),old-math.fmod(old,1)
 			offs = offs - math.fmod(offs,0.01)
-			Abar_Ohs(offs,"Off["..offs.."s]("..ohd.."-"..old..")",0,0,1)
+			if(abar.offhand) then
+				Abar_Ohs(offs,"Off["..offs.."s]("..ohd.."-"..old..")",0,0,1);
+			end
 		end
 	else
 		ont=GetTime()
